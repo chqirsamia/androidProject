@@ -51,7 +51,6 @@ CREATE TABLE passage(                          #definir les villes de passage
 		vpassage  Varchar(1000) NOT NULL, 
 	,CONSTRAINT passage_PK PRIMARY KEY (id)
 
-	,CONSTRAINT Offre_User_FK FOREIGN KEY (id) REFERENCES User(id)
 )ENGINE=InnoDB;
 
 
@@ -66,10 +65,10 @@ CREATE TABLE messagerie(
         message  Varchar(1000) NOT NULL,
 		datemesg DATETIME NOT NULL,
 		lu int NOT NULL,
-	,CONSTRAINT CartonDemande_PK PRIMARY KEY (id_carton,id)
+	,CONSTRAINT messagerie_PK PRIMARY KEY (id)
 
-	,CONSTRAINT CartonDemande_Carton_FK FOREIGN KEY (id_carton) REFERENCES Carton(id_carton)
-	,CONSTRAINT CartonDemande_User0_FK FOREIGN KEY (id) REFERENCES User(id)
+	,CONSTRAINT messagerie_FK FOREIGN KEY (id_destinataire) REFERENCES users(id)
+	,CONSTRAINT messagerie0_FK FOREIGN KEY (id_destinateur) REFERENCES users(id)
 )ENGINE=InnoDB;
 
 

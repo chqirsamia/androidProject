@@ -10,7 +10,7 @@ import android.widget.Toast;
 public class MainActivity extends AppCompatActivity {
 EditText name,lastname,email,telephone,password,confirmpassword,datenaiss,cina,sex;
 Button signup;
-TextView signin;
+
 database bdd;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,7 +27,7 @@ database bdd;
         password=(EditText) findViewById(R.id.password);
         confirmpassword=(EditText) findViewById(R.id.confirmpassword);
         signup=(Button) findViewById(R.id.signupbutton);
-        signin=(TextView)findViewById(R.id.signin);
+
         bdd = new database(this);
         signup.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -67,13 +67,7 @@ database bdd;
                 }
             }
         });
-        signin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
-                startActivity(intent);
-            }
-        });
+
 
     }
 }

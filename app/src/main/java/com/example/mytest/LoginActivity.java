@@ -20,7 +20,7 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         getSupportActionBar().setTitle("se connecter");
-        email = (EditText) findViewById(R.id.email);
+        email = (EditText) findViewById(R.id.email2);
         password = (EditText) findViewById(R.id.password2);
         loginbutton = (Button) findViewById(R.id.signinbutton2);
         signin=(TextView)findViewById(R.id.signin);

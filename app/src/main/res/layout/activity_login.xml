@@ -35,7 +35,7 @@
         android:textColorHint="@color/teal_700"
         android:textColor="#ffffff"
         android:background="@drawable/signupbutton"
-        android:layout_below="@+id/password2"/>
+       />
     </RadioGroup>
     <TextView
         android:id="@+id/signin"

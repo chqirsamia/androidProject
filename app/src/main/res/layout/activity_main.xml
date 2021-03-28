@@ -11,14 +11,18 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="name"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:textColorHint="@color/teal_700"
         android:layout_marginTop="50dp"
-        />
+        android:autofillHints="" />
     <EditText
         android:id="@+id/lastname"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="lastname"
         android:layout_marginTop="50dp"
+        android:textColorHint="@color/teal_700"
         android:layout_below="@id/name"/>
     <EditText
         android:id="@+id/telephone"
@@ -26,6 +30,7 @@
         android:layout_height="wrap_content"
         android:hint="numero de telephone"
         android:layout_marginTop="50dp"
+        android:textColorHint="@color/teal_700"
         android:layout_below="@id/lastname"/>
 
     <EditText
@@ -34,20 +39,24 @@
         android:layout_height="wrap_content"
         android:hint="email"
         android:layout_marginTop="50dp"
-        android:layout_below="@id/password"/>
+        android:textColorHint="@color/teal_700"
+        android:layout_below="@id/telephone"/>
     <EditText
         android:id="@+id/cina"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="votre numero de carte d'identité"
         android:layout_marginTop="50dp"
+        android:textColorHint="@color/teal_700"
         android:layout_below="@id/email"/>
+
     <EditText
         android:id="@+id/sex"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="votre sexe"
         android:layout_marginTop="50dp"
+        android:textColorHint="@color/teal_700"
         android:layout_below="@id/cina"/>
     <EditText
         android:id="@+id/datenaiss"
@@ -55,6 +64,7 @@
         android:layout_height="wrap_content"
         android:hint="votre date de naissance"
         android:layout_marginTop="50dp"
+        android:textColorHint="@color/teal_700"
         android:layout_below="@id/sex"/>
     <EditText
         android:id="@+id/password"
@@ -62,13 +72,15 @@
         android:layout_height="wrap_content"
         android:hint="password"
         android:layout_marginTop="50dp"
-        android:layout_below="@id/email"/>
+        android:textColorHint="@color/teal_700"
+        android:layout_below="@id/datenaiss"/>
     <EditText
         android:id="@+id/confirmpassword"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="confirm password"
         android:layout_marginTop="50dp"
+        android:textColorHint="@color/teal_700"
         android:layout_below="@id/password"/>
     <Button
         android:id="@+id/signupbutton"
@@ -76,6 +88,7 @@
         android:layout_height="wrap_content"
         android:text="sign up"
         android:layout_marginTop="50dp"
+        android:textColorHint="@color/teal_700"
         android:layout_below="@id/confirmpassword">
 
     </Button>

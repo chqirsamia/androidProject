@@ -16,6 +16,7 @@ database bdd;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        getSupportActionBar().setTitle("s'identifier");
         name=(EditText) findViewById(R.id.name);
         lastname=(EditText) findViewById(R.id.lastname);
         email=(EditText) findViewById(R.id.email);

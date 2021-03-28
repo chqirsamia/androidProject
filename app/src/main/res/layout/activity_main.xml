@@ -49,7 +49,31 @@
         android:layout_marginTop="50dp"
         android:textColorHint="@color/teal_700"
         android:layout_below="@id/email"/>
-
+    <TextView
+        android:id="@+id/gender1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="gender"
+        android:layout_marginTop="50dp"
+        android:textColor="@color/teal_700"
+        android:textSize="20dp"
+        android:layout_below="@id/cina"/>
+    <RadioGroup
+        android:id="@+id/gender"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/gender1">
+        <RadioButton
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Homme"
+            android:textSize="20dp"/>
+        <RadioButton
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Femme"
+            android:textSize="20dp"/>
+    </RadioGroup>
     <EditText
         android:id="@+id/sex"
         android:layout_width="match_parent"
@@ -57,7 +81,7 @@
         android:hint="votre sexe"
         android:layout_marginTop="50dp"
         android:textColorHint="@color/teal_700"
-        android:layout_below="@id/cina"/>
+        android:layout_below="@id/gender"/>
     <EditText
         android:id="@+id/datenaiss"
         android:layout_width="match_parent"
@@ -82,6 +106,12 @@
         android:layout_marginTop="50dp"
         android:textColorHint="@color/teal_700"
         android:layout_below="@id/password"/>
+    <RadioGroup
+        android:id="@+id/registerbutton"
+        android:layout_width="match_parent"
+        android:layout_below="@id/confirmpassword"
+        android:layout_height="wrap_content">
+
     <Button
         android:id="@+id/signupbutton"
         android:layout_width="match_parent"
@@ -89,14 +119,17 @@
         android:text="sign up"
         android:layout_marginTop="50dp"
         android:textColorHint="@color/teal_700"
-        android:layout_below="@id/confirmpassword">
+        android:textColor="#ffffff"
+        android:background="@drawable/signupbutton"
+        >
 
     </Button>
+    </RadioGroup>
     <TextView
         android:id="@+id/signin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="vous n'avez pas de compte?veuillez vous identifier"
         android:layout_marginTop="50dp"
-        android:layout_below="@id/signupbutton"/>
+        android:layout_below="@id/registerbutton"/>
 </RelativeLayout>

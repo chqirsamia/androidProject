@@ -112,18 +112,18 @@
         android:layout_below="@id/confirmpassword"
         android:layout_height="wrap_content">
 
-    <Button
-        android:id="@+id/signupbutton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="sign up"
-        android:layout_marginTop="10dp"
-        android:textColorHint="@color/teal_700"
-        android:textColor="#ffffff"
-        android:background="@drawable/signupbutton"
-        >
+        <Button
+            android:id="@+id/signupbutton"
+            android:layout_width="170dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="100dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/signupbutton"
+            android:text="sign up"
+            android:textColor="#ffffff"
+            android:textColorHint="@color/teal_700">
 
-    </Button>
+        </Button>
     </RadioGroup>
 
 </RelativeLayout>

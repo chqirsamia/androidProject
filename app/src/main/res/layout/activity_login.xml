@@ -26,22 +26,27 @@
         android:layout_width="match_parent"
         android:layout_below="@id/password2"
         android:layout_height="wrap_content">
-    <Button
-        android:id="@+id/signinbutton2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Sign in"
-        android:layout_marginTop="50dp"
-        android:textColorHint="@color/teal_700"
-        android:textColor="#ffffff"
-        android:background="@drawable/signupbutton"
-       />
+
+        <Button
+            android:id="@+id/signinbutton2"
+            android:layout_width="202dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="100dp"
+            android:layout_marginTop="50dp"
+            android:background="@drawable/signupbutton"
+            android:text="Sign in"
+            android:textColor="#ffffff"
+            android:textColorHint="@color/teal_700" />
     </RadioGroup>
+
     <TextView
         android:id="@+id/signin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="vous n'avez pas de compte?veuillez vous identifier"
-        android:layout_marginTop="50dp"
-        android:layout_below="@id/loginbutton"/>
+        android:layout_below="@id/loginbutton"
+        android:layout_marginTop="68dp"
+        android:layout_marginLeft="40dp"
+        android:text="vous n'avez pas de compte?veuillez vous identifier" />
+
+
 </RelativeLayout>

@@ -26,7 +26,6 @@ database bdd;
         telephone=(EditText) findViewById(R.id.telephone);
         datenaiss=(EditText) findViewById(R.id.datenaiss);
         cina=(EditText) findViewById(R.id.cina);
-        sex=(EditText) findViewById(R.id.sex);
         password=(EditText) findViewById(R.id.password);
         confirmpassword=(EditText) findViewById(R.id.confirmpassword);
         signup=(Button) findViewById(R.id.signupbutton);
@@ -51,7 +50,8 @@ database bdd;
                     sexe="homme";
                 else
                     sexe="femme";
-                if(user.equals("")||pass.equals("")||repass.equals(""))
+                if(user.equals("")||pass.equals("")||repass.equals("") ||nom.equals("")||phone.equals("")||datenaissance.equals("")
+                        ||cin.equals("")||sexe.equals(""))
                     Toast.makeText(MainActivity.this, "Please enter all the fields", Toast.LENGTH_SHORT).show();
                 else{
                     if(pass.equals(repass)){

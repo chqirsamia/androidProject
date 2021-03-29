@@ -76,14 +76,7 @@
             android:text="Femme"
             android:textSize="20dp"/>
     </RadioGroup>
-    <EditText
-        android:id="@+id/sex"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="votre sexe"
-        android:layout_marginTop="10dp"
-        android:textColorHint="@color/teal_700"
-        android:layout_below="@id/gender"/>
+
     <EditText
         android:id="@+id/datenaiss"
         android:layout_width="match_parent"
@@ -91,7 +84,7 @@
         android:hint="votre date de naissance"
         android:layout_marginTop="10dp"
         android:textColorHint="@color/teal_700"
-        android:layout_below="@id/sex"/>
+        android:layout_below="@id/gender"/>
     <EditText
         android:id="@+id/password"
         android:layout_width="match_parent"

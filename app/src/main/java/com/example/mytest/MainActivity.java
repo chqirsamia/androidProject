@@ -5,12 +5,15 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 public class MainActivity extends AppCompatActivity {
 EditText name,lastname,email,telephone,password,confirmpassword,datenaiss,cina,sex;
 Button signup;
-
+RadioButton homme,femme;
+RadioGroup group;
 database bdd;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,8 +30,11 @@ database bdd;
         password=(EditText) findViewById(R.id.password);
         confirmpassword=(EditText) findViewById(R.id.confirmpassword);
         signup=(Button) findViewById(R.id.signupbutton);
-
+        homme=(RadioButton) findViewById(R.id.homme);
+        femme=(RadioButton) findViewById(R.id.femme);
+        group=(RadioGroup)findViewById(R.id.gender);
         bdd = new database(this);
+
         signup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -38,10 +44,13 @@ database bdd;
                 String phone = telephone.getText().toString();
                 String datenaissance= datenaiss.getText().toString();
                 String cin = cina.getText().toString();
-                String sexe = sex.getText().toString();
+                String sexe ;
                 String pass = password.getText().toString();
                 String repass = confirmpassword.getText().toString();
-
+                if(group.getCheckedRadioButtonId() == R.id.homme)
+                    sexe="homme";
+                else
+                    sexe="femme";
                 if(user.equals("")||pass.equals("")||repass.equals(""))
                     Toast.makeText(MainActivity.this, "Please enter all the fields", Toast.LENGTH_SHORT).show();
                 else{

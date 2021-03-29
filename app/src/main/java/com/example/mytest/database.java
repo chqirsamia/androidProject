@@ -19,7 +19,7 @@ public class database extends SQLiteOpenHelper {
                 ", lastname TEXT, email TEXT, cin TEXT, sexe TEXT,role text,datenaissance text" +
                 ",pdp blob,cinphoto blob,tel int)");
     }
-hhhh
+
     @Override
     public void onUpgrade(SQLiteDatabase covoiturage, int i, int i1) {
         covoiturage.execSQL("drop Table if exists users");

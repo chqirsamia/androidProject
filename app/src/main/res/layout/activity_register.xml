@@ -44,11 +44,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
 
-        android:hint=" date de naissance : dd-MM-yyyy"
+        android:hint=" date de naissance : yyyy-MM-dd"
         android:layout_marginTop="10dp"
 
         android:textColorHint="@color/teal_700"
         android:layout_below="@id/email"/>
+
     <EditText
         android:id="@+id/password"
         android:layout_width="match_parent"

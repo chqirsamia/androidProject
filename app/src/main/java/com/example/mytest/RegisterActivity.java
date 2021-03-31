@@ -89,7 +89,7 @@ public class RegisterActivity extends AppCompatActivity {
 
         boolean validation=true;
         if ( date != null) {
-            if ( !date.matches( "[1]{1}[9]{1}[1-9]{2}[-][0]{1}[1-9]{1}[-][0-9]{1}[1-9]{1}" ) && !date.matches( "[1]{1}[9]{1}[1-9]{2}[-][1]{1}[0-2]{1}[-][0-9]{1}[1-9]{1}" )) {
+            if ( !date.matches( "[1]{1}[9]{1}[1-9]{2}[-][0]{1}[1-9]{1}[-][0-9]{1}[1-9]{1}[ ]* " ) && !date.matches( "[1]{1}[9]{1}[1-9]{2}[-][1]{1}[0-2]{1}[-][0-9]{1}[1-9]{1}" )) {
                 Toast.makeText(RegisterActivity.this, "Merci de saisir une date valide.\"", Toast.LENGTH_SHORT).show();;
                 validation=false;
             }/*else {

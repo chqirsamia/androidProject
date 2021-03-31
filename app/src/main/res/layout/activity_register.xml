@@ -6,7 +6,12 @@
     android:layout_height="match_parent"
     android:padding="10dp"
     tools:context=".RegisterActivity">
-
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/profile"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_marginLeft="130dp"
+        android:src="@drawable/profile"/>
     <EditText
         android:id="@+id/name"
         android:layout_width="match_parent"
@@ -17,6 +22,7 @@
         android:textColorHint="@color/teal_700"
         android:layout_marginTop="10dp"
         android:autofillHints=""
+        android:layout_below="@id/profile"
         />
     <EditText
         android:id="@+id/lastname"

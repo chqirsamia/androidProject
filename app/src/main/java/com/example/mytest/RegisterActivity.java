@@ -10,7 +10,8 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 public class RegisterActivity extends AppCompatActivity {
-    EditText name,lastname,email,telephone,password,confirmpassword,datenaiss,cina,sex;
+    EditText name,lastname,email,password,telephone,confirmpassword,datenaiss,cina,sex;
+
     Button signup;
     RadioButton homme,femme;
     RadioGroup group;
@@ -77,5 +78,8 @@ public class RegisterActivity extends AppCompatActivity {
         });
 
 
+    }
+    public boolean isEmailValid(CharSequence email) {
+        return android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches();
     }
 }

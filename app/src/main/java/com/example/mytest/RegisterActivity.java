@@ -53,7 +53,7 @@ public class RegisterActivity extends AppCompatActivity {
                         if(checkuser==false){
                             //Boolean insert = bdd.insertData1(user,pass,prenom,nom ,"client",datenaissance);
                             //if(insert==true){
-                                Toast.makeText(RegisterActivity.this, "Registered successfully", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(RegisterActivity.this, "veuillez terminer le formulaire", Toast.LENGTH_SHORT).show();
                                 Intent intent = new Intent(getApplicationContext(),MainActivity.class);
                                 intent.putExtra("prenom",prenom);
                                 intent.putExtra("nom", nom);

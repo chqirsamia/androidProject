@@ -18,23 +18,23 @@ import java.security.NoSuchAlgorithmException;
 import bean.User;
 
 public class MainActivity extends AppCompatActivity {
-EditText telephone,cina,sex;
-Button signup;
-RadioButton homme,femme;
-RadioGroup group;
-database bdd;
+    EditText telephone, cina, sex;
+    Button signup;
+    RadioButton homme, femme;
+    RadioGroup group;
+    database bdd;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         getSupportActionBar().setTitle("s'identifier");
-        telephone=(EditText) findViewById(R.id.telephone);
-        cina=(EditText) findViewById(R.id.cina);
-        signup=(Button) findViewById(R.id.signupbutton);
-        homme=(RadioButton) findViewById(R.id.homme);
-        femme=(RadioButton) findViewById(R.id.femme);
-        group=(RadioGroup)findViewById(R.id.gender);
+        telephone = (EditText) findViewById(R.id.telephone);
+        cina = (EditText) findViewById(R.id.cina);
+        signup = (Button) findViewById(R.id.signupbutton);
+        homme = (RadioButton) findViewById(R.id.homme);
+        femme = (RadioButton) findViewById(R.id.femme);
+        group = (RadioGroup) findViewById(R.id.gender);
         bdd = new database(this);
 
         signup.setOnClickListener(new View.OnClickListener() {
@@ -42,36 +42,36 @@ database bdd;
             public void onClick(View v) {
                 String phone = telephone.getText().toString();
                 String cin = cina.getText().toString();
-                String sexe ;
-                String prenom ;
-                String nom ;
-                String user ;
+                String sexe;
+                String prenom;
+                String nom;
+                String user;
                 String datenaissance;
-                User utilisateur=new User();
-                String pass ;
-                String repass ;
+                User utilisateur = new User();
+                String pass;
+                String repass;
 
                 Intent intent = getIntent();
                /* if (intent != null){
 
                     if (intent.hasExtra("nom")){*/
-                       nom = intent.getStringExtra("nom");
+                nom = intent.getStringExtra("nom");
                     /*}
                     if (intent.hasExtra("prenom")){*/
-                        prenom = intent.getStringExtra("prenom");
+                prenom = intent.getStringExtra("prenom");
                     /*}
                     if (intent.hasExtra("user")){*/
-                       user = intent.getStringExtra("user");
+                user = intent.getStringExtra("user");
                     /*}
                     if (intent.hasExtra("datenaissance")){*/
-                       datenaissance = intent.getStringExtra("datenaissance");
+                datenaissance = intent.getStringExtra("datenaissance");
                     /*}
                     if (intent.hasExtra("pass")){*/
-                        pass = intent.getStringExtra("pass");
+                pass = intent.getStringExtra("pass");
                     /*}
                     if (intent.hasExtra("repass")){*/
-                        repass = intent.getStringExtra("repass");
-                   // }
+                repass = intent.getStringExtra("repass");
+                // }
                /* try {
                     utilisateur=inscrireUser(user,pass, repass,nom,prenom, "client", datenaissance);
                 } catch (NoSuchAlgorithmException e) {
@@ -79,40 +79,41 @@ database bdd;
                 }
             //}*/
 
-               /* traiterTel(phone, utilisateur);
-                traitercin(cin, utilisateur);*/
-                if(group.getCheckedRadioButtonId() == R.id.homme)
-                    sexe="homme";
+                traiterTel(phone);
+                traitercin(cin);
+                if (group.getCheckedRadioButtonId() == R.id.homme)
+                    sexe = "homme";
                 else
-                    sexe="femme";
+                    sexe = "femme";
                 utilisateur.setSexe(sexe);
-                if(phone.equals("")||cin.equals("")||sexe.equals(""))
+                if (validationCin(cin)==false || validationTel(phone)==false)
                     Toast.makeText(MainActivity.this, "Please enter all the fields", Toast.LENGTH_SHORT).show();
-                else{
-                            Boolean insert = bdd.insertData(user,pass,prenom,nom,"client",datenaissance,cin,sexe,phone);
-                            if(insert==true){
-                                Toast.makeText(MainActivity.this, "Registered successfully", Toast.LENGTH_SHORT).show();
-                                Intent intent1 = new Intent(getApplicationContext(),LoginActivity.class);
-                                startActivity(intent1);
-                            }else{
-                                Toast.makeText(MainActivity.this, "Registration failed", Toast.LENGTH_SHORT).show();
-                            }
-                        }
-
+                else {
+                    Boolean insert = bdd.insertData(user, pass, prenom, nom, "client", datenaissance, cin, sexe, phone);
+                    if (insert == true) {
+                        Toast.makeText(MainActivity.this, "Registered successfully", Toast.LENGTH_SHORT).show();
+                        Intent intent1 = new Intent(getApplicationContext(), LoginActivity.class);
+                        startActivity(intent1);
+                    } else {
+                        Toast.makeText(MainActivity.this, "Registration failed", Toast.LENGTH_SHORT).show();
+                    }
                 }
+
+            }
 
         });
 
 
     }
-    public User inscrireUser(String email, String password,String repass, String name, String lastname
-            , String role, String datenaissance) throws NoSuchAlgorithmException {
-        User utilisateur=new User();
-        utilisateur.setNom( lastname );
-        utilisateur.setRole(role);
-        utilisateur.setPrenom( name );
 
-        utilisateur.setPassword( toHexString(getSHA(password))) ;
+    public User inscrireUser(String email, String password, String repass, String name, String lastname
+            , String role, String datenaissance) throws NoSuchAlgorithmException {
+        User utilisateur = new User();
+        utilisateur.setNom(lastname);
+        utilisateur.setRole(role);
+        utilisateur.setPrenom(name);
+
+        utilisateur.setPassword(toHexString(getSHA(password)));
         utilisateur.setEmail(email);
         utilisateur.setDatenaissance(datenaissance);
         utilisateur.setEmail(email);
@@ -120,8 +121,8 @@ database bdd;
 
         return utilisateur;
     }
-    public static byte[] getSHA(String input) throws NoSuchAlgorithmException
-    {
+
+    public static byte[] getSHA(String input) throws NoSuchAlgorithmException {
         // Static getInstance method is called with hashing SHA
         MessageDigest md = MessageDigest.getInstance("SHA-256");
 
@@ -131,8 +132,7 @@ database bdd;
         return md.digest(input.getBytes(StandardCharsets.UTF_8));
     }
 
-    public static String toHexString(byte[] hash)
-    {
+    public static String toHexString(byte[] hash) {
         // Convert byte array into signum representation
         BigInteger number = new BigInteger(1, hash);
 
@@ -140,46 +140,54 @@ database bdd;
         StringBuilder hexString = new StringBuilder(number.toString(16));
 
         // Pad with leading zeros
-        while (hexString.length() < 32)
-        {
+        while (hexString.length() < 32) {
             hexString.insert(0, '0');
         }
 
         return hexString.toString();
     }
-    private void traiterTel(String tel,User user){
 
-            validationTel( tel );
+    private void traiterTel(String tel) {
 
-        user.setTel(tel);
+        validationTel(tel);
+
     }
-    private void validationTel(String tel) {
-        if ( tel != null) {
-            if ( !tel.matches( "[0]{1}[0-9]{9}" ) ) {
-                Toast.makeText(MainActivity.this, "Merci de saisir un numéro de téléphone valide.", Toast.LENGTH_SHORT).show();
 
+    private boolean validationTel(String tel) {
+        boolean validation=true;
+        if (tel != null) {
+            if (!tel.matches("[0]{1}[0-9]{9}[ ]*")) {
+                Toast.makeText(MainActivity.this, "Merci de saisir un numéro de téléphone valide.", Toast.LENGTH_SHORT).show();
+                validation=false;
             }
         } else {
             Toast.makeText(MainActivity.this, "Merci de saisir un numéro de téléphone.", Toast.LENGTH_SHORT).show();
-
+            validation=false;
         }
+        return validation;
     }
-    private void traitercin(String cin,User user){
 
-        validationCin( cin);
+    private void traitercin(String cin) {
 
-        user.setCin(cin);
+        validationCin(cin);
+
+
     }
-    private void validationCin (String cin) {
-        if ( cin != null) {
-            if ( !cin.matches( "[A-Z]{1}[0-9]{6}" ) ) {
+
+    private boolean validationCin(String cin) {
+        boolean validation=true;
+        if (cin != null) {
+            if (!cin.matches("[A-Z]{1}[0-9]{6}[ ]*")) {
                 Toast.makeText(MainActivity.this, "Merci de saisir un numéro de carte d'identité valide.", Toast.LENGTH_SHORT).show();
-
+                validation= false;
             }
-        } else {
-            Toast.makeText(MainActivity.this, "Merci de saisir un numéro de carte d'identité.", Toast.LENGTH_SHORT).show();
+        } else{
+                Toast.makeText(MainActivity.this, "Merci de saisir un numéro de carte d'identité.", Toast.LENGTH_SHORT).show();
+                validation= false;
+
 
         }
+        return validation;
     }
 
 }

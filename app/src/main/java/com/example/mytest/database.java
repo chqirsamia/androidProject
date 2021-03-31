@@ -24,20 +24,48 @@ public class database extends SQLiteOpenHelper {
     public void onUpgrade(SQLiteDatabase covoiturage, int i, int i1) {
         covoiturage.execSQL("drop Table if exists users");
     }
-
-    public Boolean insertData(String email, String password, String name, String lastname, String cin, String sexe
-            , String role, String datenaissance, String tel){
+    public Boolean insertData1(String email, String password, String name, String lastname
+            , String role, String datenaissance){
         SQLiteDatabase covoiturage = this.getWritableDatabase();
         ContentValues contentValues= new ContentValues();
         contentValues.put("lastname", lastname);
         contentValues.put("name", name);
         contentValues.put("email", email);
         contentValues.put("password", password);
-        contentValues.put("tel", tel);
-        contentValues.put("cin", cin);
+
         contentValues.put("datenaissance", datenaissance);
         contentValues.put("role", role);
-        contentValues.put("sexe", sexe);
+
+        long result = covoiturage.insert("users", null, contentValues);
+        if(result==-1) return false;
+        else
+            return true;
+    }
+    public Boolean insertData(String email, String password, String name, String lastname
+            , String role, String datenaissance,String phone,String cin,String sexe){
+        SQLiteDatabase covoiturage = this.getWritableDatabase();
+        ContentValues contentValues= new ContentValues();
+        contentValues.put("lastname", lastname);
+        contentValues.put("name", name);
+        contentValues.put("email", email);
+        contentValues.put("password", password);
+        contentValues.put("tel", phone);
+        contentValues.put("cin", cin);
+        contentValues.put("sexe",sexe );
+        contentValues.put("datenaissance", datenaissance);
+        contentValues.put("role", role);
+
+        long result = covoiturage.insert("users", null, contentValues);
+        if(result==-1) return false;
+        else
+            return true;
+    }
+    public Boolean insertsuiteData(String phone,String cin,String sexe){
+        SQLiteDatabase covoiturage = this.getWritableDatabase();
+        ContentValues contentValues= new ContentValues();
+        contentValues.put("tel", phone);
+        contentValues.put("cin", cin);
+        contentValues.put("sexe",sexe );
         long result = covoiturage.insert("users", null, contentValues);
         if(result==-1) return false;
         else

@@ -6,14 +6,29 @@
     android:layout_height="match_parent"
     android:padding="30dp"
     tools:context=".MainActivity">
-
+    <LinearLayout
+        android:id="@+id/images"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:orientation="horizontal" >
     <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/cinpic"
+        android:id="@+id/cinpicrecto"
         android:layout_width="150dp"
         android:layout_height="150dp"
-        android:layout_marginLeft="120dp"
+        android:layout_marginLeft="0dp"
         android:layout_marginTop="30dp"
         android:src="@drawable/cin" />
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/cinpicverso"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_below="@id/cinpicrecto"
+            android:layout_marginTop="30dp"
+            android:layout_marginRight="0dp"
+            android:src="@drawable/cin" />
+    </LinearLayout>
 
     <EditText
         android:id="@+id/cina"
@@ -22,7 +37,7 @@
         android:hint="votre numero de carte d'identité"
         android:layout_marginTop="30dp"
         android:textColorHint="@color/teal_700"
-        android:layout_below="@id/cinpic"/>
+        android:layout_below="@id/images"/>
     <TextView
         android:id="@+id/gender1"
         android:layout_width="match_parent"

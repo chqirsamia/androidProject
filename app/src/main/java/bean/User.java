@@ -1,5 +1,7 @@
 package bean;
 
+import android.graphics.drawable.Drawable;
+//import java.lang.Object.ImageUtils;
 public class User {
     private int id;
     private String nom;
@@ -13,7 +15,9 @@ public class User {
     private String password;
     private String datenaissance;
     private String role;
-
+    private Drawable cinrecto;
+    private Drawable cinverso;
+    private Drawable pdp;
     public float getSolde() {
         return solde;
     }
@@ -114,5 +118,11 @@ public class User {
         this.role = role;
 
     }
+    /*public void setCinrecto(byte[] pictureData) {
+       this.cinrecto = imageUtils.byteToDrawable(pictureData);
+    }
 
+    public byte[] getCinrecto(){
+        return ImageUtils.drawableToByteArray(cinrecto);
+    }*/
 }

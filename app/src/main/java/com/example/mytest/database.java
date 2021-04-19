@@ -17,7 +17,7 @@ public class database extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase covoiturage) {
         covoiturage.execSQL("create Table users(id INTEGER PRIMARY KEY   AUTOINCREMENT, password TEXT, name TEXT" +
                 ", lastname TEXT, email TEXT, cin TEXT, sexe TEXT,role text,datenaissance text" +
-                ",pdp blob,cinphoto blob,tel int)");
+                ",pdp blob,cinphotorecto blob,cinphotoverso blob,tel int)");
     }
 
     @Override

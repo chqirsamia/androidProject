@@ -19,6 +19,9 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.theartofdev.edmodo.cropper.CropImage;
+import com.theartofdev.edmodo.cropper.CropImageView;
+
 import java.io.IOException;
 import java.math.BigInteger;
 import java.nio.charset.StandardCharsets;
@@ -310,15 +313,25 @@ public class MainActivity extends AppCompatActivity {
                         gallerie.setType("image/*");
                         gallerie.setAction(Intent.ACTION_GET_CONTENT);
                         imageUriverso=data.getData();
-                        try {
-                            Bitmap bitmap= MediaStore.Images.Media.getBitmap(getContentResolver(),imageUriverso);
+                        CropImage.activity()
+                                .setGuidelines(CropImageView.Guidelines.ON)
+                                .setAspectRatio(1,1)
+                                .start(this);
+                        if(requestCode==CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE) {
+                            CropImage.ActivityResult result = CropImage.getActivityResult(data);
+
+                            if (requestCode == RESULT_OK) {
+                                Uri resultUri = result.getUri();
+
+                                try {
+                            Bitmap bitmap= MediaStore.Images.Media.getBitmap(getContentResolver(),resultUri);
                             cinpicverso.setImageBitmap(bitmap);
                         } catch (IOException e) {
                             e.printStackTrace();
                         }
 
 
-                    }
+                    }}}
                     break;
             }
         }

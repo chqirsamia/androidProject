@@ -19,6 +19,9 @@ import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.theartofdev.edmodo.cropper.CropImage;
+import com.theartofdev.edmodo.cropper.CropImageView;
+
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -201,15 +204,30 @@ public void onActivityResult(int requestCode, int resultCode, Intent data)
                 break;
             case 1:
                 Intent gallerie=new Intent();
+                if(gallerie.resolveActivity(getPackageManager()) ==null)
+                Toast.makeText(RegisterActivity.this, "veuillez entrer une photo", Toast.LENGTH_SHORT).show();
+else{
+
                 gallerie.setType("image/*");
                 gallerie.setAction(Intent.ACTION_GET_CONTENT);
                 imageUri=data.getData();
+                CropImage.activity()
+                        .setGuidelines(CropImageView.Guidelines.ON)
+                        .setAspectRatio(1,1)
+                        .start(this);
+                if(requestCode==CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE) {
+                    CropImage.ActivityResult result = CropImage.getActivityResult(data);
+
+                    if (requestCode == RESULT_OK) {
+                        Uri resultUri = result.getUri();
+
+
                 try {
-                    Bitmap bitmap= MediaStore.Images.Media.getBitmap(getContentResolver(),imageUri);
+                    Bitmap bitmap= MediaStore.Images.Media.getBitmap(getContentResolver(),resultUri);
                     profilepic.setImageBitmap(bitmap);
                 } catch (IOException e) {
                     e.printStackTrace();
-                }
+                }}}
               /*  if (resultCode == RESULT_OK && data != null) {
                     Uri selectedImage =  data.getData();
                     String[] filePathColumn = {MediaStore.Images.Media.DATA};
@@ -228,7 +246,7 @@ public void onActivityResult(int requestCode, int resultCode, Intent data)
 
                 }*/
                 break;
-}}}
+}}}}
     private void selectImage(Context context) {
         final CharSequence[] options = { "Take Photo", "Choose from Gallery","Cancel" };
 
